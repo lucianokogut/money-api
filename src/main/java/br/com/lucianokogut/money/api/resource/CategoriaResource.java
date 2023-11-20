@@ -2,6 +2,7 @@ package br.com.lucianokogut.money.api.resource;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -41,7 +42,10 @@ public class CategoriaResource {
     }
 
     @GetMapping("/{codigo}")
-    public Categoria buscarPeloCodigo(@PathVariable Long codigo) {
-        return categoriaRepository.findOne(codigo);
-    }
-}
+    public ResponseEntity<Categoria> buscarPeloCodigo(@PathVariable Long codigo) {
+        // Ajustado o método para findById por causa do deprecated do findOne
+        // Corrigido para buscar pela chave primária do tipo Long
+        Optional<Categoria> categoria = categoriaRepository.findById(codigo);
+
+        return categoria.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+    }}
