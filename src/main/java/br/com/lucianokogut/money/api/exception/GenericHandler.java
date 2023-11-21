@@ -21,7 +21,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 @ControllerAdvice
-public class GenericHandler extends ResponseEntityExceptionHandler{
+public class GenericHandler extends ResponseEntityExceptionHandler {
 
     @Autowired
     private MessageSource messageSource;
@@ -30,11 +30,12 @@ public class GenericHandler extends ResponseEntityExceptionHandler{
     @Nullable
     protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex,
             HttpHeaders headers, HttpStatusCode status, WebRequest request) {
-        
-        String mensagemUsuario = messageSource.getMessage("formato.request.invalido", null, LocaleContextHolder.getLocale());
+
+        String mensagemUsuario = messageSource.getMessage("formato.request.invalido", null,
+                LocaleContextHolder.getLocale());
         String mensagemDev = ex.getCause().toString();
         List<Erro> erros = Arrays.asList(new Erro(mensagemUsuario, mensagemDev));
-        return handleExceptionInternal(ex, erros , headers, HttpStatus.BAD_REQUEST, request);
+        return handleExceptionInternal(ex, erros, headers, HttpStatus.BAD_REQUEST, request);
     }
 
     @Override
@@ -45,7 +46,6 @@ public class GenericHandler extends ResponseEntityExceptionHandler{
         List<Erro> erros = criarListaErros(ex.getBindingResult());
         return handleExceptionInternal(ex, erros, headers, HttpStatus.BAD_REQUEST, request);
     }
-
 
     private List<Erro> criarListaErros(BindingResult bindingResult) {
 
@@ -78,7 +78,5 @@ public class GenericHandler extends ResponseEntityExceptionHandler{
             return mensagemDev;
         }
 
-    
-        
     }
 }

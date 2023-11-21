@@ -10,14 +10,13 @@ import jakarta.validation.constraints.NotNull;
 @Entity
 @Table(name = "categoria")
 public class Categoria {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigo;
 
     @NotNull
     private String nome;
-
 
     // Região para os Getters e Setters
     public Long getCodigo() {
@@ -62,5 +61,4 @@ public class Categoria {
         return true;
     }
 
-    
 }
