@@ -9,10 +9,11 @@ public class Endereco {
     private String complemento;
     private String bairro;
     private String cep;
+    private String unidade;
     private String localidade;
     private String uf;
-    private String ddd;
-    private String ibge;
+    private Integer ddd;
+    private Integer ibge;
     private String siafi;
     private String gia;
 
@@ -47,6 +48,12 @@ public class Endereco {
     public void setCep(String cep) {
         this.cep = cep;
     }
+    public String getUnidade() {
+        return unidade;
+    }
+    public void setUnidade(String unidade) {
+        this.unidade = unidade;
+    }
     public String getLocalidade() {
         return localidade;
     }
@@ -59,16 +66,16 @@ public class Endereco {
     public void setUf(String uf) {
         this.uf = uf;
     }
-    public String getDdd() {
+    public Integer getDdd() {
         return ddd;
     }
-    public void setDdd(String ddd) {
+    public void setDdd(Integer ddd) {
         this.ddd = ddd;
     }
-    public String getIbge() {
+    public Integer getIbge() {
         return ibge;
     }
-    public void setIbge(String ibge) {
+    public void setIbge(Integer ibge) {
         this.ibge = ibge;
     }
     public String getSiafi() {
