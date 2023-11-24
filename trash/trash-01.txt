@@ -1,0 +1,353 @@
+Faço uma requisição para o 
+https://buscacepinter.correios.com.br/app/endereco/index.php?endereco=88080-080
+
+Form Data
+pagina:		/app/endereco/index.php
+cepaux:
+mensagem_alerta:
+endereco:	88080-080
+tipoCEP:	ALL
+
+View Source
+pagina=%2Fapp%2Fendereco%2Findex.php&cepaux=&mensagem_alerta=&endereco=88080-000&tipoCEP=ALL
+
+e na resposta devo recuperar o carrega-cep-endereco.php com todos os atributos do Response
+https://buscacepinter.correios.com.br/app/endereco/carrega-cep-endereco.php
+
+
+{
+    "erro": false,
+    "mensagem": "DADOS ENCONTRADOS COM SUCESSO.",
+    "total": 1,
+    "dados": [
+        {
+            "uf": "SC",
+            "localidade": "Florian\u00f3polis",
+            "locNoSem": "",
+            "locNu": "",
+            "localidadeSubordinada": "",
+            "logradouroDNEC": "Avenida Engenheiro Max de Souza",
+            "logradouroTextoAdicional": "",
+            "logradouroTexto": "",
+            "bairro": "Coqueiros",
+            "baiNu": "",
+            "nomeUnidade": "",
+            "cep": "88080000",
+            "tipoCep": "2",
+            "numeroLocalidade": "",
+            "situacao": "",
+            "faixasCaixaPostal": [],
+            "faixasCep": []
+        }
+    ]
+}
+
+
+https://viacep.com.br/ws/01301-908/json
+
+https://viacep.com.br/ws/88080-901/json
+
+ao clicar no logradouro em questão o Modal que aparece no centro da tela é chamado por uma requesição
+POST https://buscacepinter.correios.com.br/app/consulta/html/consulta-detalhes-cep.php
+"argus"
+88080-901
+Condomínio Argus
+
+neste caso abrirá os detalhes com uma informação relativa a "Grande Usuário": "Conjunto Residencial Argus"
+
+{
+    "erro": false,
+    "mensagem": "Dados encontrados com sucesso.",
+    "total": 1,
+    "dados": [
+        {
+            "uf": "SC",
+            "localidade": "Florian\u00f3polis",
+            "locNoSem": "",
+            "locNu": "84521",
+            "localidadeSubordinada": "",
+            "logradouroDNEC": "Rua Desembargador Pedro Silva, 2202",
+            "logradouroTextoAdicional": "",
+            "logradouroTexto": "",
+            "bairro": "Coqueiros",
+            "baiNu": "",
+            "nomeUnidade": "Conjunto Residencial Argus",
+            "cep": "88080901",
+            "tipoCep": "5",
+            "numeroLocalidade": "84521",
+            "situacao": "",
+            "faixasCaixaPostal": [],
+            "faixasCep": []
+        }
+    ]
+}
+
+
+ao fazer uma consulta de um CEP que não existe a requisição ficaria
+
+Form Data
+pagina:		/app/endereco/index.php
+cepaux:
+mensagem_alerta:
+endereco:	88000020
+tipoCEP:	ALL
+
+View Source
+pagina=%2Fapp%2Fendereco%2Findex.php&cepaux=&mensagem_alerta=&endereco=88000020&tipoCEP=ALL
+
+Response do carrega-cep-endereco.php com todos os objetos
+{
+	"erro": false,
+	"mensagem": "Dados n\u00e3o encontrado",
+	"total": 0,
+	"dados": []
+}
+
+
+
+ao fazer uma consulta por logradouro que possui dois nomes de forma composta a requisição ficaria
+
+Form Data
+pagina:		/app/endereco/index.php
+cepaux:
+mensagem_alerta:
+endereco:	"max souza"
+tipoCEP:	LOG
+
+View Source
+pagina=%2Fapp%2Fendereco%2Findex.php&cepaux=&mensagem_alerta=&endereco=max%20souza&tipoCEP=LOG
+
+Response do carrega-cep-endereco.php com todos os objetos
+{
+    "erro": false,
+    "mensagem": "DADOS ENCONTRADOS COM SUCESSO.",
+    "total": 30,
+    "dados": [
+        {
+            "uf": "MG",
+            "localidade": "Santa Luzia",
+            "locNoSem": "",
+            "locNu": "",
+            "localidadeSubordinada": "",
+            "logradouroDNEC": "Rua Maximiler de Souza",
+            "logradouroTextoAdicional": "",
+            "logradouroTexto": "",
+            "bairro": "Conjunto Cristina (S\u00e3o Benedito)",
+            "baiNu": "",
+            "nomeUnidade": "",
+            "cep": "33110340",
+            "tipoCep": "2",
+            "numeroLocalidade": "",
+            "situacao": "",
+            "faixasCaixaPostal": [],
+            "faixasCep": []
+        },
+        {
+            "uf": "MT",
+            "localidade": "Rondon\u00f3polis",
+            "locNoSem": "",
+            "locNu": "",
+            "localidadeSubordinada": "",
+            "logradouroDNEC": "Rua Max Ferraz de Souza",
+            "logradouroTextoAdicional": "",
+            "logradouroTexto": "",
+            "bairro": "Parque Residencial Buriti",
+            "baiNu": "",
+            "nomeUnidade": "",
+            "cep": "78716025",
+            "tipoCep": "2",
+            "numeroLocalidade": "",
+            "situacao": "",
+            "faixasCaixaPostal": [],
+            "faixasCep": []
+        },
+        {
+            "uf": "PE",
+            "localidade": "Belo Jardim",
+            "locNoSem": "",
+            "locNu": "",
+            "localidadeSubordinada": "",
+            "logradouroDNEC": "Rua Maximino Gabriel de Souza (Lot Morada do Sol)",
+            "logradouroTextoAdicional": "",
+            "logradouroTexto": "",
+            "bairro": "Floresta",
+            "baiNu": "",
+            "nomeUnidade": "",
+            "cep": "55158302",
+            "tipoCep": "2",
+            "numeroLocalidade": "",
+            "situacao": "",
+            "faixasCaixaPostal": [],
+            "faixasCep": []
+        },
+        {
+            "uf": "PR",
+            "localidade": "Londrina",
+            "locNoSem": "",
+            "locNu": "",
+            "localidadeSubordinada": "",
+            "logradouroDNEC": "Rua Maximina Pereira de Souza",
+            "logradouroTextoAdicional": "",
+            "logradouroTexto": "",
+            "bairro": "Cafezal",
+            "baiNu": "",
+            "nomeUnidade": "",
+            "cep": "86045680",
+            "tipoCep": "2",
+            "numeroLocalidade": "",
+            "situacao": "",
+            "faixasCaixaPostal": [],
+            "faixasCep": []
+        },
+        {
+            "uf": "SC",
+            "localidade": "Florian\u00f3polis",
+            "locNoSem": "",
+            "locNu": "",
+            "localidadeSubordinada": "",
+            "logradouroDNEC": "Avenida Engenheiro Max de Souza",
+            "logradouroTextoAdicional": "",
+            "logradouroTexto": "",
+            "bairro": "Coqueiros",
+            "baiNu": "",
+            "nomeUnidade": "",
+            "cep": "88080000",
+            "tipoCep": "2",
+            "numeroLocalidade": "",
+            "situacao": "",
+            "faixasCaixaPostal": [],
+            "faixasCep": []
+        },
+        {
+            "uf": "SC",
+            "localidade": "Joinville",
+            "locNoSem": "",
+            "locNu": "",
+            "localidadeSubordinada": "",
+            "logradouroDNEC": "Rua Max Ruy de Souza",
+            "logradouroTextoAdicional": "",
+            "logradouroTexto": "",
+            "bairro": "Adhemar Garcia",
+            "baiNu": "",
+            "nomeUnidade": "",
+            "cep": "89230616",
+            "tipoCep": "2",
+            "numeroLocalidade": "",
+            "situacao": "",
+            "faixasCaixaPostal": [],
+            "faixasCep": []
+        },
+        { "continua": "bastante..."
+		},
+        {
+            "uf": "SC",
+            "localidade": "Brusque",
+            "locNoSem": "",
+            "locNu": "",
+            "localidadeSubordinada": "",
+            "logradouroDNEC": "Rua Maximiliano Furbringer - de 591\/592 ao fim",
+            "logradouroTextoAdicional": "",
+            "logradouroTexto": "",
+            "bairro": "Souza Cruz",
+            "baiNu": "",
+            "nomeUnidade": "",
+            "cep": "88354488",
+            "tipoCep": "2",
+            "numeroLocalidade": "",
+            "situacao": "",
+            "faixasCaixaPostal": [],
+            "faixasCep": []
+        }
+    ]
+}
+
+
+
+
+
+
+CREATE TABLE pessoa (
+    codigo      BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
+    nome        VARCHAR(100) NOT NULL,
+    logradouro  VARCHAR(60)
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+    private Long codigo;
+    
+    @NotNull
+    private String nome;
+
+    private String logradouro;
+    private String numero;
+    private String complemento;
+    private String bairro;
+    private String cep;
+    private String localidade;
+    private String uf;
+    private String ddd;
+    private String ibge;
+    private String siafi;
+    private String gia;
+
+    @NotNull
+    private Boolean ativo;
+
+						<section id="inicioConteudo">
+							<div class="campos">
+								<div class="campo col-7">
+
+									<div class="rotulo">
+										<label for="endereco">Digite um CEP ou um Endereço:</label>
+									</div>
+									<div class="controle">
+										<input name="endereco" id="endereco" type="text" value="" maxlength="60" size="50" required accesskey="E" placeholder="Não utilize nº de casa/apto/lote/prédio ou abreviação.">
+                            </div>
+										<div class="mensagem" title="mensagem" hidden="true">
+											Não utilize nº de casa/apto/lote/prédio ou abreviação.
+										</div>
+									</div>
+								</div>
+								<div class="campos">
+									<div class="campo col-7">
+										<div class="rotulo">
+											<label for="tipoCEP">Esse CEP é de:</label>
+										</div>
+										<div class="controle">
+											<select name="tipoCEP" id="tipoCEP" accesskey="T" >
+                                      <optgroup label="Tipo do CEP">
+                                        <option value="LOG">Localidade/Logradouro</option>
+                                        <option value="PRO">CEP Promocional</option>
+                                        <option value="CPC">Caixa Postal Comunitária</option>
+                                        <option value="GRU">Grande Usuário</option>
+                                        <option value="UOP">Unidade Operacional</option>
+                                        <option value="ALL" selected="">Todos</option>
+                                      </optgroup>
+                                </select>
+										</div>
+										<div class="mensagem" title="mensagem" hidden="true">&nbsp;msg
+										</div>
+									</div>
+								</div>
+								<div class="campos">
+									<div class="campo col-1">
+										<div class="botoes">
+											<button name="btn_pesquisar" id="btn_pesquisar" class="primario" accesskey="F">Buscar</button>
+										</div>
+									</div>
+								</div>
+						</section>
+					</div>
+				</div>
+
+
+INSERT INTO categoria (nome) VALUES ('Salários');
+INSERT INTO categoria (nome) VALUES ('Trabalho Extra');
+INSERT INTO categoria (nome) VALUES ('Lazer');
+INSERT INTO categoria (nome) VALUES ('Alimentação');
+INSERT INTO categoria (nome) VALUES ('Supermercado');
+INSERT INTO categoria (nome) VALUES ('Farmácia');
+INSERT INTO categoria (nome) VALUES ('Mobilidade');
+INSERT INTO categoria (nome) VALUES ('Doação');
+INSERT INTO categoria (nome) VALUES ('Outros');
