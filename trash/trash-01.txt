@@ -1,3 +1,8 @@
+1) Criar a classe PessoaRepository para implementar o JPA via extends
+2) Criar a classe PessoaResource para implementar todas as fucionalidades
+3) Personalizar mensagens de validação
+4) Criar classe para implementar o Health Check da API
+
 Faço uma requisição para o 
 https://buscacepinter.correios.com.br/app/endereco/index.php?endereco=88080-080
 
