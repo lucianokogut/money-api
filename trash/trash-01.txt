@@ -1,5 +1,5 @@
 1) Criar a classe PessoaRepository para implementar o JPA via extends - OK Feito!
-2) Criar a classe PessoaResource para implementar todas as fucionalidades
+2) Criar a classe PessoaResource para implementar todas as fucionalidades - OK Feito!
 3) Personalizar mensagens de validação
 4) Criar classe para implementar o Health Check da API
 
