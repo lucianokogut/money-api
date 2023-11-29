@@ -1,5 +1,6 @@
 package br.com.lucianokogut.money.api.resource;
 
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
@@ -58,8 +59,8 @@ public class PessoaResource {
     public ResponseEntity<Pessoa> atualizar(@PathVariable Long codigo, @Valid @RequestBody Pessoa pessoa) {
         Optional<Pessoa> pessoaOptional = pessoaRepository.findById(codigo);
 
-        if (pessoaOptional.isEmpty()) {
-            return ResponseEntity.notFound().build();
+        if (pessoaOptional == null) {
+            throw new NoSuchElementException();
         }
 
         Pessoa pessoaSalva = pessoaOptional.get();
