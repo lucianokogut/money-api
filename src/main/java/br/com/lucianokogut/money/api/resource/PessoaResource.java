@@ -45,6 +45,10 @@ public class PessoaResource {
         // Ajustado o método para findById por causa do deprecated do findOne
         // Corrigido para buscar pela chave primária do tipo Long
         Optional<Pessoa> pessoa = pessoaRepository.findById(codigo);
+        
+        if (pessoa.isEmpty()) {
+            throw new NoSuchElementException();
+        }
 
         return pessoa.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
@@ -59,7 +63,7 @@ public class PessoaResource {
     public ResponseEntity<Pessoa> atualizar(@PathVariable Long codigo, @Valid @RequestBody Pessoa pessoa) {
         Optional<Pessoa> pessoaOptional = pessoaRepository.findById(codigo);
 
-        if (pessoaOptional == null) {
+        if (pessoaOptional.isEmpty()) {
             throw new NoSuchElementException();
         }
 
