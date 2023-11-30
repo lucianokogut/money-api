@@ -3,7 +3,6 @@ package br.com.lucianokogut.money.api.resource;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
@@ -22,6 +21,7 @@ import jakarta.validation.Valid;
 import br.com.lucianokogut.money.api.event.RecursoCriadoEvent;
 import br.com.lucianokogut.money.api.model.Pessoa;
 import br.com.lucianokogut.money.api.repository.PessoaRepository;
+import br.com.lucianokogut.money.api.service.PessoaService;
 
 @RestController
 @RequestMapping("/pessoas")
@@ -29,6 +29,9 @@ public class PessoaResource {
 
     @Autowired
     private PessoaRepository pessoaRepository;
+
+    @Autowired
+    private PessoaService pessoaService;
 
     @Autowired
     private ApplicationEventPublisher publisher;
@@ -45,7 +48,7 @@ public class PessoaResource {
         // Ajustado o método para findById por causa do deprecated do findOne
         // Corrigido para buscar pela chave primária do tipo Long
         Optional<Pessoa> pessoa = pessoaRepository.findById(codigo);
-        
+
         if (pessoa.isEmpty()) {
             throw new NoSuchElementException();
         }
@@ -61,15 +64,7 @@ public class PessoaResource {
 
     @PutMapping("/{codigo}")
     public ResponseEntity<Pessoa> atualizar(@PathVariable Long codigo, @Valid @RequestBody Pessoa pessoa) {
-        Optional<Pessoa> pessoaOptional = pessoaRepository.findById(codigo);
-
-        if (pessoaOptional.isEmpty()) {
-            throw new NoSuchElementException();
-        }
-
-        Pessoa pessoaSalva = pessoaOptional.get();
-        BeanUtils.copyProperties(pessoa, pessoaSalva, "codigo");
-        pessoaRepository.save(pessoaSalva);
+        Pessoa pessoaSalva = pessoaService.atualizar(codigo, pessoa);
         return ResponseEntity.ok(pessoaSalva);
     }
 }
