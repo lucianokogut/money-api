@@ -17,6 +17,18 @@ public class PessoaService {
     private PessoaRepository pessoaRepository;
 
     public Pessoa atualizar(Long codigo, Pessoa pessoa) {
+        Pessoa pessoaSalva = buscarPessoaPeloCodigo(codigo);
+        BeanUtils.copyProperties(pessoa, pessoaSalva, "codigo");
+        return pessoaRepository.save(pessoaSalva);
+    }
+
+    public void atualizarPropriedadeAtivo(Long codigo, Boolean ativo) {
+        Pessoa pessoaSalva = buscarPessoaPeloCodigo(codigo);
+        pessoaSalva.setAtivo(ativo);
+        pessoaRepository.save(pessoaSalva);
+    }
+
+    private Pessoa buscarPessoaPeloCodigo(Long codigo) {
         Optional<Pessoa> pessoaOptional = pessoaRepository.findById(codigo);
 
         if (pessoaOptional.isEmpty()) {
@@ -24,7 +36,7 @@ public class PessoaService {
         }
 
         Pessoa pessoaSalva = pessoaOptional.get();
-        BeanUtils.copyProperties(pessoa, pessoaSalva, "codigo");
-        return pessoaRepository.save(pessoaSalva);
+        return pessoaSalva;
     }
+
 }
