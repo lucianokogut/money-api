@@ -1,5 +1,6 @@
 package br.com.lucianokogut.money.api.resource;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -35,6 +36,11 @@ public class PessoaResource {
 
     @Autowired
     private ApplicationEventPublisher publisher;
+
+    @GetMapping
+    public List<Pessoa> listar() {
+        return pessoaRepository.findAll();
+    }
 
     @PostMapping
     public ResponseEntity<Pessoa> criar(@Valid @RequestBody Pessoa pessoa, HttpServletResponse response) {
