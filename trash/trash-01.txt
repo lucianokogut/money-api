@@ -1,8 +1,8 @@
 1) Criar a classe PessoaRepository para implementar o JPA via extends - OK Feito!
 2) Criar a classe PessoaResource para implementar todas as fucionalidades - OK Feito!
 3) Personalizar mensagens de validação - OK Feito!
-4) Criar classe para implementar o Health Check da API
-5) Criar a entidade do BD para controle de lançamentos
+4) PENDENTE - Criar classe para implementar o Health Check da API
+5) Criar a entidade do BD para controle de lançamentos - OK Feito!
 6) Criar registros para exemplos do controle de lançamentos
 7) Criar a classe Lancamentos para implementar os métodos construtores, getters e setters
 
