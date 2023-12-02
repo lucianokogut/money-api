@@ -4,6 +4,7 @@
 4) PENDENTE - Criar classe para implementar o Health Check da API
 5) Criar a entidade do BD para controle de lançamentos - OK Feito!
 6) Criar registros para exemplos do controle de lançamentos
+    (Inicialmente Feito e Testado com 3 registros!!!)
 7) Criar a classe Lancamentos para implementar os métodos construtores, getters e setters
 
 
