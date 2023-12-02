@@ -8,6 +8,13 @@ CREATE TABLE lancamento (
     tipo                VARCHAR(20) NOT NULL,
     codigo_categoria    BIGINT(20) NOT NULL,
     codigo_pessoa       BIGINT(20) NOT NULL,
-    FOREING KEY (codigo_categoria) REFERENCES categoria(codigo),
-    FOREING KEY (codigo_pessoa) REFERENCES pessoa(codigo)
+    FOREIGN KEY (codigo_categoria) REFERENCES categoria(codigo),
+    FOREIGN KEY (codigo_pessoa) REFERENCES pessoa(codigo)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO lancamento (descricao, data_vencimento, data_pagamento, valor, observacao, tipo, codigo_categoria, codigo_pessoa) 
+            VALUES ('Descrição 1', '2023-12-01', '2023-12-10', 100, 'Observação 1', 'DESPESA', 5, 1);
+INSERT INTO lancamento (descricao, data_vencimento, data_pagamento, valor, observacao, tipo, codigo_categoria, codigo_pessoa)
+            VALUES ('Descrição 2', '2023-12-02', '2023-12-11', 100, 'Observação 2', 'DESPESA', 6, 2);
+INSERT INTO lancamento (descricao, data_vencimento, data_pagamento, valor, observacao, tipo, codigo_categoria, codigo_pessoa) 
+            VALUES ('Descrição 3', '2023-12-03', '2023-12-12', 100, 'Observação 3', 'DESPESA', 7, 3);
