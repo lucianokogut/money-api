@@ -4,8 +4,12 @@
 4) PENDENTE - Criar classe para implementar o Health Check da API
 5) Criar a entidade do BD para controle de lançamentos - OK Feito!
 6) Criar registros para exemplos do controle de lançamentos
-    (Inicialmente Feito e Testado com 3 registros!!!)
+    (Inicialmente Feito e Testado com 3 registros!!!) - OK Feito!
 7) Criar a classe Lancamentos para implementar os métodos construtores, getters e setters
+8) Criar a classe LancamentoRepository para implementar o JPA via extends
+9) Criar a classe LancamentoResource para implementar todas as funcionalidades
+10) Criar a classe LancamentoService para implementar as regras de validação dos lançamentos
+11) Personalizar mensagens de validação
 
 
 Faço uma requisição para o 
