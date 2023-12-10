@@ -8,7 +8,7 @@
     (Refinado com 15 Registros) - OK Feito!
 7) Criar a classe Lancamentos para implementar os métodos construtores, getters e setters - OK Feito!
 8) Criar a classe LancamentoRepository para implementar o JPA via extends - OK Feito!
-9) Criar a classe LancamentoResource para implementar todas as funcionalidades
+9) Criar a classe LancamentoResource para implementar todas as funcionalidades - OK Feito!
 10) Criar a classe LancamentoService para implementar as regras de validação dos lançamentos
 11) Personalizar mensagens de validação
 
